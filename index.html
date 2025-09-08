@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Louis GEORGET - CV</title>
+  <style>
+    /* ===== Global Styles ===== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      color: white;
+      background: #1e3c72;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      opacity: 0.8;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(30, 60, 114, 0.9);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      color: #FFD700;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    #home { background: linear-gradient(135deg, #1e3c72, #2a5298); gap: 20px; }
+    #projects { background: linear-gradient(135deg, #2a5298, #1e3c72); }
+    #skills { background: linear-gradient(135deg, #1e3c72, #0b1f3a); }
+
+    h1 { font-size: 4em; animation: fadeIn 2s ease-in-out; }
+    h2 { font-size: 2em; margin-bottom: 20px; }
+    h3 { font-size: 1.2em; color: #FFD700; margin-bottom: 10px; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== Contact Icons ===== */
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 20px;
+    }
+
+    .contact-icons img {
+      width: 55px;
+      height: 55px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .contact-icons img:hover {
+      transform: scale(1.2);
+    }
+
+    /* ===== Projects ===== */
+    .projects-container {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 320px;        /* largeur de la carte */
+      min-height: 380px;   /* hauteur adaptée */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .project-languages {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .project-languages img {
+      width: 80px;   /* taille icône */
+      height: 80px;
+      object-fit: contain;
+      border-radius: 3px;
+    }
+
+    /* ===== Skills ===== */
+    .skills-categories {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: nowrap;
+      margin-top: 20px;
+    }
+
+    .skills-category {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      width: 200px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .skills-category:hover {
+      transform: scale(1.05);
+    }
+
+    .skills-category h3 {
+      text-align: center;
+    }
+
+    .skills-category .skill-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .skills-category .skill-item img {
+      width: 30px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+
+    .skills-category .skill-item p {
+      font-size: 1em;
+      text-align: center;
+    }
+
+    /* ===== Responsive ===== */
+    @media screen and (max-width: 1000px) {
+      .skills-categories {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .project-card {
+        width: 80%;
+        min-height: 300px;
+      }
+    }
+
+    /* ===== Modals ===== */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 200; 
+      padding-top: 100px; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.9); 
+    }
+
+    .modal-content {
+      background-color: #1e3c72;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 15px;
+      color: white;
+      text-align: left;
+      transform: scale(0.8);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .modal.show .modal-content { transform: scale(1); }
+
+    .close {
+      color: #FFD700;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover { color: white; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <nav>
+    <a href="#home">Accueil / Home</a>
+    <a onclick="scrollToSection('projects')">Mes projets / My Projects</a>
+    <a onclick="scrollToSection('skills')">Mes compétences / My Skills</a>
+  </nav>
+
+  <!-- ===== Home ===== -->
+  <section id="home">
+    <h1>Louis GEORGET</h1>
+    <p>Étudiant en Audit, Finance & Conseil - Major de Promotion à l'ENGDE</p>
+
+    <div class="contact-icons">
+      <a href="tel:+33762672461" title="Appeler"><img src="phone.png" alt="Téléphone"></a>
+      <a href="mailto:louisgeorget@icloud.com" title="Envoyer un mail"><img src="email.png" alt="Email"></a>
+      <a href="https://www.linkedin.com/in/louis-georget-8304b2329" target="_blank" title="LinkedIn"><img src="linkedin.png" alt="LinkedIn"></a>
+    </div>
+  </section>
+
+  <!-- ===== Projects ===== -->
+  <section id="projects">
+    <h2>Mes projets / My Projects</h2>
+    <div class="projects-container">
+      <!-- Projet 1 -->
+      <div class="project-card" onclick="openModal('modal1')">
+        <img src="benford.jpg" alt="Projet 1">
+        <p>Benford Detector</p>
+        <div class="project-languages">
+          <img src="python.png" alt="Python" title="Python">
+          <img src="openai.png" alt="OpenAI" title="OpenAI">
+        </div>
+      </div>
+
+      <!-- Projet 2 -->
+      <div class="project-card" onclick="openModal('modal2')">
+        <img src="aladdin.jpg" alt="Projet 2">
+        <p>Mini-ALADDIN</p>
+        <div class="project-languages">
+          <img src="python.png" alt="Python" title="Python">
+          <img src="openai.png" alt="OpenAI" title="OpenAI">
+        </div>
+      </div>
+
+      <!-- Projet 3 -->
+      <div class="project-card" onclick="openModal('modal3')">
+        <img src="siteinter.jpg" alt="Projet 3">
+        <p>Mon site</p>
+        <div class="project-languages">
+          <img src="css.png" alt="CSS" title="CSS">
+          <img src="html.png" alt="HTML" title="HTML">
+          <img src="openai.png" alt="OpenAI" title="OpenAI">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section id="skills">
+    <h2>Mes compétences / My Skills</h2>
+    <div class="skills-categories">
+
+      <!-- Programming Skills -->
+      <div class="skills-category">
+        <h3>Programming Skills</h3>
+        <div class="skill-item"><img src="python.png" alt="Python"><p>Python</p></div>
+        <div class="skill-item"><img src="html.png" alt="HTML"><p>HTML</p></div>
+        <div class="skill-item"><img src="css.png" alt="CSS"><p>CSS</p></div>
+        <div class="skill-item"><img src="vba.png" alt="VBA"><p>VBA</p></div>
+        <div class="skill-item"><img src="cobol.jpg" alt="COBOL"><p>COBOL</p></div>
+      </div>
+
+      <!-- Softwares -->
+      <div class="skills-category">
+        <h3>Softwares</h3>
+        <div class="skill-item"><img src="excel.png" alt="excel"><p>Excel</p></div>
+        <div class="skill-item"><img src="powerpoint.png" alt="PowerPoint"><p>PowerPoint</p></div>
+        <div class="skill-item"><img src="word.png" alt="Word"><p>Word</p></div>
+        <div class="skill-item"><img src="openai.png" alt="OpenAI"><p>OpenAI</p></div>
+        <div class="skill-item"><img src="github.png" alt="GitHub"><p>GitHub</p></div>
+        <div class="skill-item"><img src="vscode.png" alt="Visual Studio Code"><p>Visual Studio Code</p></div>
+      </div>
+
+      <!-- Languages -->
+      <div class="skills-category">
+        <h3>Languages</h3>
+        <div class="skill-item"><img src="france.png" alt="Français"><p>Français-Langue Maternelle</p></div>
+        <div class="skill-item"><img src="uk.png" alt="English"><p>English-C1</p></div>
+        <div class="skill-item"><img src="spain.png" alt="Español"><p>Español-B2</p></div>
+        <div class="skill-item"><img src="germany.png" alt="Deutsch"><p>Deutsch-A1</
+    </div>
+  </section>
+
+  <!-- Modals -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <h2>Benford Detector</h2>
+    <p>Benford Detector est un programme python qui analyse les chiffres des données financières (compte de resulat,bilan et cashflow) d'une entreprise afin de vérifier s’ils suivent la loi de Benford et détecter d’éventuelles anomalies ou fraudes. Il compare la distribution réelle des premiers chiffres à la distribution théorique attendue et met en évidence les écarts significatifs. Tout le programme est automatisé et ne necessite que le TICKER de l'entreprise.  Pour le code en detail veuillez me contacter par mail. </p>
+  </div>
+</div>
+
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <h2>Mini-ALADDIN</h2>
+    <p>Mini ALADDIN est un programme python qui automatise l’analyse de données financières d'actifs (Actions et ETF) en appliquant des règles prédéfinies comme la methode LedoitWolf pour détecter des anomalies ou des points à vérifier. Il génère ensuite un rapport synthétique permettant de visualiser rapidement les zones à risque et les correlations interactifs afin de predire l'etat du marché à une echelle experimental. Pour le code en detail veuillez me contacter par mail.</p>
+  </div>
+</div>
+
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <h2>Mon site</h2>
+    <p>Mon site est un portfolio en ligne qui présente mes projets et compétences et expériences professionnelles. Il est conçu pour être à la fois informatif et visuellement attrayant, mettant en avant mes réalisations et ma passion pour l'audit, la finance et le conseil. Pour le code en detail veuillez me contacter par mail.</p>
+  </div>
+</div>
+
+  <!-- ===== Scripts ===== -->
+  <script>
+    // Smooth scroll
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Modals
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'block';
+      const content = modal.querySelector('.modal-content');
+      content.style.transform = 'scale(0.8)';
+      setTimeout(() => content.style.transform = 'scale(1)', 50);
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+      }
+    }
+  </script>
+
+<!-- Footer -->
+<footer style="text-align:center; padding:20px; background: rgba(30,60,114,0.8); color:white; font-size:0.9em;">
+  &copy; 2025 Louis GEORGET - All rights reserved.
+</footer>
+<script>
+  // Empêche d'ouvrir ton site dans un iframe externe (clickjacking)
+  if (window.top !== window.self) {
+    window.top.location = window.location;
+  }
+
+  // Nettoyage des URL malveillantes
+  const links = document.querySelectorAll('a');
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('javascript:')) {
+      link.setAttribute('href', '#');
+    }
+  });
+
+  // Empêche le clic droit pour protéger un peu tes images
+  document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+</body>
+</html>
