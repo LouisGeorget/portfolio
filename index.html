@@ -5,19 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Louis GEORGET - CV</title>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+
   <style>
     /* ===== Global Styles ===== */
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif; /* texte courant */
+      font-family: 'Montserrat', sans-serif; /* texte courant */
       scroll-behavior: smooth;
       color: white;
       background: #1e3c72;
     }
 
-    h1, h2, h3, p {
+    h1{
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif; /* titres */
+    }
+    h2 {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif; /* titres */
+    }
+    h3 {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif; /* titres */
+    }
+
+    p {
       margin: 0;
       padding: 0;
       font-family: 'Montserrat', sans-serif; /* titres */
@@ -526,12 +542,14 @@ particlesJS("particles-js", {
 
 
 <script>
-
-  // bouton pour changer la langue
 let currentLang = "fr";
 
 function toggleLang() {
   currentLang = currentLang === "fr" ? "en" : "fr";
+  updateLang();
+}
+
+function updateLang() {
   document.querySelectorAll("[data-fr]").forEach(el => {
     el.textContent = el.getAttribute(`data-${currentLang}`);
   });
@@ -539,13 +557,18 @@ function toggleLang() {
   // changer le drapeau
   const flag = document.getElementById("lang-flag");
   if(currentLang === "fr") {
-    flag.src = "uk.png";    // montre le drapeau anglais pour passer en anglais
+    flag.src = "uk.png";    
     flag.alt = "English";
   } else {
-    flag.src = "france.png";    // montre le drapeau français pour passer en français
+    flag.src = "france.png";    
     flag.alt = "Français";
   }
 }
+
+// Appliquer la langue au chargement de la page
+window.addEventListener("DOMContentLoaded", () => {
+  updateLang();
+});
 </script>
 
 </body>
