@@ -84,20 +84,6 @@
 }
 
 
-/* Ajout d'un calque avec le logo transparent */
-#home::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("lg.png") no-repeat center;
-  background-size: 1750px;  /* ajuste la taille */
-  opacity: 0.1; /* règle la transparence (0.1 = très fondu, 0.3 = plus visible) */
-  pointer-events: none; /* évite de bloquer les clics */
-}
-
     #projects { 
   background: linear-gradient(135deg, #2a5298, #1e3c72); 
   position: relative;  
@@ -119,6 +105,8 @@
 
     /* ===== Contact Icons ===== */
     .contact-icons {
+      position: relative;
+      z-index: 10;
       display: flex;
       justify-content: center;
       gap: 50px;
@@ -302,19 +290,24 @@
 
   <!-- ===== Navigation ===== -->
   <nav>
-    <a href="#home">Accueil / Home</a>
-    <a onclick="scrollToSection('projects')">Mes projets / My Projects</a>
-    <a onclick="scrollToSection('skills')">Mes compétences / My Skills</a>
-  </nav>
+  <a onclick="scrollToSection('home')">Accueil / Home</a>
+  <a onclick="scrollToSection('projects')">Mes projets / My Projects</a>
+  <a onclick="scrollToSection('skills')">Mes compétences / My Skills</a>
+</nav>
 
   <!-- ===== Home ===== -->
-  <section id="home">
-  <div id="particles-js" style="position:absolute; width:100%; height:100%; top:0; left:0; z-index:0;"></div>
+<section id="home" style="position:relative; overflow:hidden;">
+  <!-- Logo en fond -->
+  <img src="lg.png" alt="Logo" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:1750px; opacity:0.1; pointer-events:none; z-index:0;">
 
-  <h1>Louis GEORGET</h1>
-  <p>Étudiant en Audit, Finance & Conseil - Major de Promotion à l'ENGDE</p>
+  <!-- Particles interactives -->
+  <div id="particles-js" style="position:absolute; width:100%; height:100%; top:0; left:0; z-index:1;"></div>
 
-  <div class="contact-icons">
+  <!-- Contenu -->
+  <h1 style="position:relative; z-index:5;">Louis GEORGET</h1>
+  <p style="position:relative; z-index:5;">Étudiant en Audit, Finance & Conseil - Major de Promotion à l'ENGDE</p>
+
+  <div class="contact-icons" style="position:relative; z-index:5;">
     <a href="tel:+33762672461" title="Appeler"><img src="phone.png" alt="Téléphone"></a>
     <a href="mailto:louisgeorget@icloud.com" title="Envoyer un mail"><img src="email.png" alt="Email"></a>
     <a href="https://www.linkedin.com/in/louis-georget-8304b2329" target="_blank" title="LinkedIn"><img src="linkedin.png" alt="LinkedIn"></a>
@@ -401,7 +394,7 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal1')">&times;</span>
     <h2>Benford Detector</h2>
-    <p>Benford Detector est un programme python qui analyse les chiffres des données financières (compte de resulat,bilan et cashflow) d'une entreprise afin de vérifier s’ils suivent la loi de Benford et détecter d’éventuelles anomalies ou fraudes. Il compare la distribution réelle des premiers chiffres à la distribution théorique attendue et met en évidence les écarts significatifs. Tout le programme est automatisé et ne necessite que le TICKER de l'entreprise.  Pour le code en detail veuillez me contacter par mail. </p>
+    <p>Benford Detector est un programme python qui analyse les chiffres des données financières (compte de résultat, bilan et cashflow) d'une entreprise afin de vérifier s’ils suivent la loi de Benford et détecter d’éventuelles anomalies ou fraudes. Il compare la distribution réelle des premiers chiffres à la distribution théorique attendue et met en évidence les écarts significatifs. Tout le programme est automatisé et ne nécessite que le TICKER de l'entreprise.  Pour le code en détail veuillez me contacter par mail. </p>
   </div>
 </div>
 
@@ -410,8 +403,7 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal2')">&times;</span>
     <h2>Mini-ALADDIN</h2>
-    <p>Mini ALADDIN est un programme python qui automatise l’analyse de données financières d'actifs (Actions et ETF) en appliquant des règles prédéfinies comme la methode LedoitWolf pour détecter des anomalies ou des points à vérifier. Il génère ensuite un rapport synthétique permettant de visualiser rapidement les zones à risque et les correlations interactifs afin de predire l'etat du marché à une echelle experimental. Pour le code en detail veuillez me contacter par mail.</p>
-  </div>
+    <p>Mini-ALADDIN est un projet codé en Python, inspiré par le modèle de BlackRock, qui automatise l’analyse de données financières. Il utilise la méthode Ledoit-Wolf pour optimiser les portefeuilles tout en réduisant le risque et génère des diagrammes de corrélation pour visualiser les relations entre les actifs étudiés (panel de 10 actions diverses et 4 ETF). Il produit ensuite un rapport synthétique permettant de prédire l’état du marché à une échelle expérimentale. Pour le code en détail, veuillez me contacter par mail.</p>
 </div>
 
 <div id="modal3" class="modal">
