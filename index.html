@@ -289,10 +289,15 @@
 <body>
 
   <!-- ===== Navigation ===== -->
-  <nav>
-  <a onclick="scrollToSection('home')">Accueil / Home</a>
-  <a onclick="scrollToSection('projects')">Mes projets / My Projects</a>
-  <a onclick="scrollToSection('skills')">Mes compétences / My Skills</a>
+  <nav style="display:flex; align-items:center; padding:15px 20px;">
+  <a onclick="scrollToSection('home')" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a onclick="scrollToSection('projects')" data-fr="Mes projets" data-en="My Projects">Mes projets</a>
+  <a onclick="scrollToSection('skills')" data-fr="Mes compétences" data-en="My Skills">Mes compétences</a>
+
+  <!-- Drapeau à droite -->
+  <img id="lang-flag" src="uk.png" alt="English" 
+       style="width:40px; height:40px; cursor:pointer" 
+       onclick="toggleLang()">
 </nav>
 
   <!-- ===== Home ===== -->
@@ -304,8 +309,11 @@
   <div id="particles-js" style="position:absolute; width:100%; height:100%; top:0; left:0; z-index:1;"></div>
 
   <!-- Contenu -->
-  <h1 style="position:relative; z-index:5;">Louis GEORGET</h1>
-  <p style="position:relative; z-index:5;">Étudiant en Audit, Finance & Conseil - Major de Promotion à l'ENGDE</p>
+  <h1 data-fr="Louis GEORGET" data-en="Louis GEORGET">Louis GEORGET</h1>
+<p data-fr="Étudiant en Audit, Finance & Conseil - Major de Promotion à l'ENGDE"
+   data-en="Student in Audit, Finance & Consulting - Top of Class at ENGDE">
+   Étudiant en Audit, Finance & Conseil - Major de Promotion à l'ENGDE
+</p>
 
   <div class="contact-icons" style="position:relative; z-index:5;">
     <a href="tel:+33762672461" title="Appeler"><img src="phone.png" alt="Téléphone"></a>
@@ -317,12 +325,12 @@
   <!-- ===== Projects ===== -->
   <section id="projects">
     <img src="lg.png" alt="Logo" class="page-logo">
-    <h2>Mes projets / My Projects</h2>
+    <h2 data-fr="Mes projets" data-en="My Projects">Mes projets</h2>
     <div class="projects-container">
       <!-- Projet 1 -->
       <div class="project-card" onclick="openModal('modal1')">
         <img src="benford.jpg" alt="Projet 1">
-        <p>Benford Detector</p>
+        <p data-fr="Detecteur de Benford" data-en="Benford Detector">Benford Detector</p>
         <div class="project-languages">
           <img src="python.png" alt="Python" title="Python">
           <img src="openai.png" alt="OpenAI" title="OpenAI">
@@ -342,7 +350,7 @@
       <!-- Projet 3 -->
       <div class="project-card" onclick="openModal('modal3')">
         <img src="siteinter.jpg" alt="Projet 3">
-        <p>Mon site</p>
+        <p data-fr="Mon Site" data-en="My Website">Mon Site</p>
         <div class="project-languages">
           <img src="css.png" alt="CSS" title="CSS">
           <img src="html.png" alt="HTML" title="HTML">
@@ -355,12 +363,12 @@
   <!-- ===== Skills ===== -->
   <section id="skills">
     <img src="lg.png" alt="Logo" class="page-logo">
-    <h2>Mes compétences / My Skills</h2>
+    <h2 data-fr="Mes compétences" data-en="My Skills">Mes compétences</h2>
     <div class="skills-categories">
 
       <!-- Programming Skills -->
       <div class="skills-category">
-        <h3>Programming Skills</h3>
+        <h3 data-fr="Compétences en Programmation" data-en="Programming Skills">Compétences en Programmation</h3>
         <div class="skill-item"><img src="python.png" alt="Python"><p>Python</p></div>
         <div class="skill-item"><img src="html.png" alt="HTML"><p>HTML</p></div>
         <div class="skill-item"><img src="css.png" alt="CSS"><p>CSS</p></div>
@@ -370,7 +378,7 @@
 
       <!-- Softwares -->
       <div class="skills-category">
-        <h3>Softwares</h3>
+        <h3 data-fr="Logiciels" data-en="Softwares">Logiciels</h3>
         <div class="skill-item"><img src="excel.png" alt="excel"><p>Excel</p></div>
         <div class="skill-item"><img src="powerpoint.png" alt="PowerPoint"><p>PowerPoint</p></div>
         <div class="skill-item"><img src="word.png" alt="Word"><p>Word</p></div>
@@ -381,11 +389,11 @@
 
       <!-- Languages -->
       <div class="skills-category">
-        <h3>Languages</h3>
-        <div class="skill-item"><img src="france.png" alt="Français"><p>Français-Langue Maternelle</p></div>
-        <div class="skill-item"><img src="uk.png" alt="English"><p>English-C1</p></div>
-        <div class="skill-item"><img src="spain.png" alt="Español"><p>Español-B2</p></div>
-        <div class="skill-item"><img src="germany.png" alt="Deutsch"><p>Deutsch-A1</p></div>
+        <h3 data-fr="Langues" data-en="Languages">Langues</h3>
+        <div class="skill-item"><img src="france.png" alt="Français"><p data-fr="Francais-Langue Maternelle" data-en="French - Native Language"></p></div>
+        <div class="skill-item"><img src="uk.png" alt="English"><p data-fr="Anglais-C1" data-en="English - C1"></p></div>
+        <div class="skill-item"><img src="spain.png" alt="Español"><p data-fr="Espagnol-B1" data-en="Spanish - B1"></p></div>
+        <div class="skill-item"><img src="germany.png" alt="Deutsch"><p data-fr="Allemand-A1" data-en="German - A1"></p></div>
     </div>
   </section>
 
@@ -393,24 +401,40 @@
 <div id="modal1" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal1')">&times;</span>
-    <h2>Benford Detector</h2>
-    <p>Benford Detector est un programme python qui analyse les chiffres des données financières (compte de résultat, bilan et cashflow) d'une entreprise afin de vérifier s’ils suivent la loi de Benford et détecter d’éventuelles anomalies ou fraudes. Il compare la distribution réelle des premiers chiffres à la distribution théorique attendue et met en évidence les écarts significatifs. Tout le programme est automatisé et ne nécessite que le TICKER de l'entreprise.  Pour le code en détail veuillez me contacter par mail. </p>
+    
+    <!-- Titre -->
+    <h2 data-fr="Benford Detector" data-en="Benford Detector">
+      Benford Detector
+    </h2>
+    
+    <!-- Description -->
+    <p data-fr="Benford Detector est un programme Python qui analyse les chiffres des données financières (compte de résultat, bilan et cashflow) d'une entreprise afin de vérifier s’ils suivent la loi de Benford et détecter d’éventuelles anomalies ou fraudes. Il compare la distribution réelle des premiers chiffres à la distribution théorique attendue et met en évidence les écarts significatifs. Tout le programme est automatisé et ne nécessite que le TICKER de l'entreprise. Pour le code en détail, veuillez me contacter par mail."
+       data-en="Benford Detector is a Python program that analyzes the digits of a company’s financial data (income statement, balance sheet and cash flow) to verify whether they follow Benford’s law and to detect potential anomalies or fraud. It compares the actual distribution of leading digits with the expected theoretical distribution and highlights significant deviations. The entire process is fully automated and only requires the company’s ticker symbol. For detailed code, please contact me by email.">
+    </p>
   </div>
 </div>
-
 
 <div id="modal2" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal2')">&times;</span>
-    <h2>Mini-ALADDIN</h2>
-    <p>Mini-ALADDIN est un projet codé en Python, inspiré par le modèle de BlackRock, qui automatise l’analyse de données financières. Il utilise la méthode Ledoit-Wolf pour optimiser les portefeuilles tout en réduisant le risque et génère des diagrammes de corrélation pour visualiser les relations entre les actifs étudiés (panel de 10 actions diverses et 4 ETF). Il produit ensuite un rapport synthétique permettant de prédire l’état du marché à une échelle expérimentale. Pour le code en détail, veuillez me contacter par mail.</p>
+
+    <h2 data-fr="Mini-ALADDIN" data-en="Mini-ALADDIN">Mini-ALADDIN</h2>
+
+    <p data-fr="Mini-ALADDIN est un projet codé en Python, inspiré par le modèle de BlackRock, qui automatise l’analyse de données financières. Il utilise la méthode Ledoit-Wolf pour optimiser les portefeuilles tout en réduisant le risque et génère des diagrammes de corrélation pour visualiser les relations entre les actifs étudiés (panel de 10 actions diverses et 4 ETF). Il produit ensuite un rapport synthétique permettant de prédire l’état du marché à une échelle expérimentale. Pour le code en détail, veuillez me contacter par mail."
+       data-en="Mini-ALADDIN is a Python project inspired by BlackRock’s model, designed to automate financial data analysis. It leverages the Ledoit-Wolf method to optimize portfolios while minimizing risk and generates correlation diagrams to visualize relationships between the studied assets (a panel of 10 diverse stocks and 4 ETFs). It then produces a synthetic report that provides experimental-scale market predictions. For the detailed code, please contact me by email.">
+    </p>
+  </div>
 </div>
 
 <div id="modal3" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal3')">&times;</span>
-    <h2>Mon site</h2>
-    <p>Mon site est un portfolio en ligne qui présente mes projets et compétences et expériences professionnelles. Il est conçu pour être à la fois informatif et visuellement attrayant, mettant en avant mes réalisations et ma passion pour l'audit, la finance et le conseil. Pour le code en detail veuillez me contacter par mail.</p>
+
+    <h2 data-fr="Mon Site" data-en="My Website">Mon Site</h2>
+
+    <p data-fr="Mon site est un portfolio en ligne qui présente mes projets, compétences et expériences professionnelles. Il est conçu pour être à la fois informatif et visuellement attrayant, mettant en avant mes réalisations et ma passion pour l'audit, la finance et le conseil. Pour le code en détail, veuillez me contacter par mail."
+       data-en="My website is an online portfolio showcasing my projects, skills, and professional experiences. It is designed to be both informative and visually appealing, highlighting my achievements and my passion for audit, finance, and consulting. For the detailed code, please contact me by email.">
+    </p>
   </div>
 </div>
 
@@ -496,8 +520,33 @@ particlesJS("particles-js", {
     }
   });
 
-  // Empêche le clic droit pour protéger un peu tes images
+  //Empêche le clic droit pour protéger un peu tes images
   document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
+
+
+<script>
+
+  // bouton pour changer la langue
+let currentLang = "fr";
+
+function toggleLang() {
+  currentLang = currentLang === "fr" ? "en" : "fr";
+  document.querySelectorAll("[data-fr]").forEach(el => {
+    el.textContent = el.getAttribute(`data-${currentLang}`);
+  });
+
+  // changer le drapeau
+  const flag = document.getElementById("lang-flag");
+  if(currentLang === "fr") {
+    flag.src = "uk.png";    // montre le drapeau anglais pour passer en anglais
+    flag.alt = "English";
+  } else {
+    flag.src = "france.png";    // montre le drapeau français pour passer en français
+    flag.alt = "Français";
+  }
+}
+</script>
+
 </body>
 </html>
