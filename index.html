@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Louis GEORGET - PORTFOLIO</title>
+  <title>Louis GEORGET - CV</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  
   <style>
     /* ===== Global Styles ===== */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif; /* texte courant */
       scroll-behavior: smooth;
       color: white;
       background: #1e3c72;
@@ -17,7 +20,9 @@
     h1, h2, h3, p {
       margin: 0;
       padding: 0;
+      font-family: 'Montserrat', sans-serif; /* titres */
     }
+
 
     p {
       opacity: 0.8;
@@ -49,7 +54,7 @@
     }
 
     nav a:hover {
-      color: #FFD700;
+      color: #ffd700;
     }
 
     /* ===== Sections ===== */
@@ -63,9 +68,45 @@
       padding: 50px 20px;
     }
 
-    #home { background: linear-gradient(135deg, #1e3c72, #2a5298); gap: 20px; }
-    #projects { background: linear-gradient(135deg, #2a5298, #1e3c72); }
-    #skills { background: linear-gradient(135deg, #1e3c72, #0b1f3a); }
+  #home {
+  position: relative; /* pour que le calque reste dans la section */
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  gap: 20px;
+  overflow: hidden; /* évite que le logo déborde */
+}
+
+#home h1 {
+  color: #ffd700; 
+}
+
+#home p {
+  color: #ffffff; 
+}
+
+
+/* Ajout d'un calque avec le logo transparent */
+#home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("lg.png") no-repeat center;
+  background-size: 1750px;  /* ajuste la taille */
+  opacity: 0.1; /* règle la transparence (0.1 = très fondu, 0.3 = plus visible) */
+  pointer-events: none; /* évite de bloquer les clics */
+}
+
+    #projects { 
+  background: linear-gradient(135deg, #2a5298, #1e3c72); 
+  position: relative;  
+}
+
+    #skills { 
+  background: linear-gradient(135deg, #1e3c72, #0b1f3a); 
+  position: relative;  
+}
 
     h1 { font-size: 4em; animation: fadeIn 2s ease-in-out; }
     h2 { font-size: 2em; margin-bottom: 20px; }
@@ -246,6 +287,15 @@
     }
 
     .close:hover { color: white; }
+
+    /* ===== Petit logo sur les autres pages ===== */
+    .page-logo {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 100px;
+      opacity: 0.6;
+    }
   </style>
 </head>
 <body>
@@ -259,18 +309,21 @@
 
   <!-- ===== Home ===== -->
   <section id="home">
-    <h1>Louis GEORGET</h1>
-    <p>Étudiant en Audit, Finance & Conseil - Major de Promotion à l'ENGDE</p>
+  <div id="particles-js" style="position:absolute; width:100%; height:100%; top:0; left:0; z-index:0;"></div>
 
-    <div class="contact-icons">
-      <a href="tel:+33762672461" title="Appeler"><img src="phone.png" alt="Téléphone"></a>
-      <a href="mailto:louisgeorget@icloud.com" title="Envoyer un mail"><img src="email.png" alt="Email"></a>
-      <a href="https://www.linkedin.com/in/louis-georget-8304b2329" target="_blank" title="LinkedIn"><img src="linkedin.png" alt="LinkedIn"></a>
-    </div>
-  </section>
+  <h1>Louis GEORGET</h1>
+  <p>Étudiant en Audit, Finance & Conseil - Major de Promotion à l'ENGDE</p>
+
+  <div class="contact-icons">
+    <a href="tel:+33762672461" title="Appeler"><img src="phone.png" alt="Téléphone"></a>
+    <a href="mailto:louisgeorget@icloud.com" title="Envoyer un mail"><img src="email.png" alt="Email"></a>
+    <a href="https://www.linkedin.com/in/louis-georget-8304b2329" target="_blank" title="LinkedIn"><img src="linkedin.png" alt="LinkedIn"></a>
+  </div>
+</section>
 
   <!-- ===== Projects ===== -->
   <section id="projects">
+    <img src="lg.png" alt="Logo" class="page-logo">
     <h2>Mes projets / My Projects</h2>
     <div class="projects-container">
       <!-- Projet 1 -->
@@ -303,11 +356,12 @@
           <img src="openai.png" alt="OpenAI" title="OpenAI">
         </div>
       </div>
-    </div>
-  </section>
+  </div>
+</section>
 
   <!-- ===== Skills ===== -->
   <section id="skills">
+    <img src="lg.png" alt="Logo" class="page-logo">
     <h2>Mes compétences / My Skills</h2>
     <div class="skills-categories">
 
@@ -338,7 +392,7 @@
         <div class="skill-item"><img src="france.png" alt="Français"><p>Français-Langue Maternelle</p></div>
         <div class="skill-item"><img src="uk.png" alt="English"><p>English-C1</p></div>
         <div class="skill-item"><img src="spain.png" alt="Español"><p>Español-B2</p></div>
-        <div class="skill-item"><img src="germany.png" alt="Deutsch"><p>Deutsch-A1</
+        <div class="skill-item"><img src="germany.png" alt="Deutsch"><p>Deutsch-A1</p></div>
     </div>
   </section>
 
@@ -364,7 +418,7 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal3')">&times;</span>
     <h2>Mon site</h2>
-    <p>Mon site est un portfolio en ligne qui présente mes projets et compétences. Il est conçu pour être à la fois informatif et visuellement attrayant, mettant en avant mes réalisations et ma passion pour l'audit, la finance et le conseil. Pour le code en detail veuillez me contacter par mail.</p>
+    <p>Mon site est un portfolio en ligne qui présente mes projets et compétences et expériences professionnelles. Il est conçu pour être à la fois informatif et visuellement attrayant, mettant en avant mes réalisations et ma passion pour l'audit, la finance et le conseil. Pour le code en detail veuillez me contacter par mail.</p>
   </div>
 </div>
 
@@ -394,6 +448,42 @@
       }
     }
   </script>
+
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 150,
+      "density": { "enable": true, "value_area": 800 }
+    },
+    "color": { "value": "#ffd700" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5, "random": true },
+    "size": { "value": 3, "random": true },
+    "line_linked": {
+      "enable": true,
+      "distance": 120,
+      "color": "#FFD700",
+      "opacity": 0.1,
+      "width": 1
+    },
+    "move": { "enable": true, "speed": 3.5, "direction": "none", "random": true, "out_mode": "out" }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": true, "mode": "repulse" },
+      "onclick": { "enable": true, "mode": "push" },
+      "resize": true
+    },
+    "modes": {
+      "repulse": { "distance": 150 },
+      "push": { "particles_nb": 4 }
+    }
+  },
+  "retina_detect": true
+});
+</script>
 
 <!-- Footer -->
 <footer style="text-align:center; padding:20px; background: rgba(30,60,114,0.8); color:white; font-size:0.9em;">
